@@ -48,14 +48,14 @@
             android:layout_alignParentEnd="true" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/searchbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Suchen"
-            android:layout_marginTop="17dp"
-            android:layout_below="@+id/searchfield"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="18dp" />
+            android:layout_below="@+id/searchfield"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="17dp"
+            android:text="Suchen" />
 
         <TextView
             android:id="@+id/searchfieldLable"
