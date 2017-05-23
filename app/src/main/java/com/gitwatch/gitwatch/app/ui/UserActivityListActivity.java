@@ -46,7 +46,7 @@ public class UserActivityListActivity extends AppCompatActivity {
 
         String keyword = getIntent().getStringExtra("keyword");
         try {
-            UserList = new UserService().getByName(keyword);
+            UserList = new UserService().getByKeywords(keyword);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -94,15 +94,15 @@ public class UserActivityListActivity extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
 
-            holder.mContentView.setText(mValues.get(position).name);
-            holder.mScoreView.setText(Double.toString(mValues.get(position).score));
+            holder.mContentView.setText(mValues.get(position).getName());
+            holder.mScoreView.setText(Double.toString(mValues.get(position).getScore()));
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(UserActivityDetailFragment.ARG_ITEM_ID, Long.toString(holder.mItem.id));
+                        arguments.putString(UserActivityDetailFragment.ARG_ITEM_ID, Long.toString(holder.mItem.getId()));
                         UserActivityDetailFragment fragment = new UserActivityDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -111,7 +111,7 @@ public class UserActivityListActivity extends AppCompatActivity {
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, UserActivityDetailActivity.class);
-                        intent.putExtra(UserActivityDetailFragment.ARG_ITEM_ID, Long.toString(holder.mItem.id));
+                        intent.putExtra(UserActivityDetailFragment.ARG_ITEM_ID, Long.toString(holder.mItem.getId()));
 
                         context.startActivity(intent);
                     }

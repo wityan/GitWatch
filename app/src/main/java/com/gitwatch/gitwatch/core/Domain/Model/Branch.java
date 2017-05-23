@@ -15,4 +15,12 @@ public class Branch {
     public void setCommitCount(int commitCount) {
         this.commitCount = commitCount;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCommitCount() {
+        return commitCount;
+    }
 }

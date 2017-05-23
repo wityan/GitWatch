@@ -21,4 +21,23 @@ public class User{
     private String bio;
     private int repositoryCount;
 
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public int getRepositoryCount() {
+        return repositoryCount;
+    }
 }

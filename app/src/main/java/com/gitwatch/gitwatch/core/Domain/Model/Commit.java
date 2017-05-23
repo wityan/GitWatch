@@ -16,4 +16,16 @@ public class Commit {
         this.message = message;
         this.date = date;
     }
+
+    public String getCommitter() {
+        return committer;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 }

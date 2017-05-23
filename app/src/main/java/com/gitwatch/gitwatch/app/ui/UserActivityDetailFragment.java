@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
-import com.gitwatch.gitwatch.app.ui.dummy.DummyContent;
 import com.gitwatch.gitwatch.core.Domain.Model.User;
 import com.gitwatch.gitwatch.infrastructure.github.Services.UserService;
 
@@ -61,7 +60,7 @@ public class UserActivityDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.name);
+                appBarLayout.setTitle(mItem.getName());
             }
         }
     }
@@ -73,8 +72,8 @@ public class UserActivityDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            if(mItem.bio != "null"){
-                ((TextView) rootView.findViewById(R.id.useractivity_detail)).setText(mItem.bio);
+            if(mItem.getBio() != "null"){
+                ((TextView) rootView.findViewById(R.id.useractivity_detail)).setText(mItem.getBio());
             }
         }
 

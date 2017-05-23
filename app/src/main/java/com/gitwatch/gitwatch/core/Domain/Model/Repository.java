@@ -22,4 +22,20 @@ public class Repository {
         this.owner = owner;
         this.description = description;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
