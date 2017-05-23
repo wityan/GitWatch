@@ -9,8 +9,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
+import com.gitwatch.gitwatch.core.Domain.Model.User;
+import com.gitwatch.gitwatch.infrastructure.github.Services.RepositoryService;
+import com.gitwatch.gitwatch.infrastructure.github.Services.UserService;
 
-import org.w3c.dom.Text;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +33,14 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_user:
                     searchfield.setHint("Benutzersuche");
                     searchfieldLable.setText("Nach Benutzer suchen");
-                    return true;
+                    UserService service = new UserService();
+                    List<User> list;
+                    try {
+                         list = service.getByName("nzisw");
+                         return true;
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 case R.id.navigation_repository:
                     searchfield.setHint("Repositorysuche");
                     searchfieldLable.setText("Nach Repository suchen");
