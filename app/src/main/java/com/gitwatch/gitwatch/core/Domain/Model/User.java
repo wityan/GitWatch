@@ -15,10 +15,10 @@ public class User{
         this.repositoryCount = repositoryCount;
     }
 
-    public long id;
-    public String name;
-    public double score;
-    public String bio;
-    public int repositoryCount;
+    private long id;
+    private String name;
+    private double score;
+    private String bio;
+    private int repositoryCount;
 
 }

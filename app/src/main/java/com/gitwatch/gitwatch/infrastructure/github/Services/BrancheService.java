@@ -1,7 +1,9 @@
 package com.gitwatch.gitwatch.infrastructure.github.Services;
 
-import com.gitwatch.gitwatch.core.Domain.IUserService;
+import com.gitwatch.gitwatch.core.Domain.IBrancheService;
+import com.gitwatch.gitwatch.core.Domain.Model.Branch;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.AsyncJsonTask;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.BrancheFactory;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.UserFactory;
 
 import org.json.JSONException;
@@ -13,11 +15,10 @@ import java.util.concurrent.ExecutionException;
  * Created by bziswn on 23.05.2017.
  */
 
-public class UserService implements IUserService {
-
+public class BrancheService implements IBrancheService {
     @Override
-    public List getByKeywords(String name) throws JSONException {
-        String url = "https://api.github.com/search/users?q=" + name;
+    public List getByRepository(String repoId) throws JSONException {
+        String url = "https://api.github.com/repositories/" + repoId + "/branches";
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();
@@ -25,19 +26,16 @@ public class UserService implements IUserService {
             e.printStackTrace();
         }
 
-        return UserFactory.getListFromJson(json);
+//        List<Branch> branches = BrancheFactory.getListFromJson(json);
+//        for (Branch branch: branches){
+//            branch.setCommitCount(this.getById(branch.id));
+//        }
+//        return branches;
+        return null;
     }
 
     @Override
     public Object getById(long id) throws JSONException {
-        String url = "https://api.github.com/user/"+id;
-        String json = "";
-        try {
-            json = new AsyncJsonTask().execute(url).get();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return UserFactory.getObjectFromJson(json);
+        return null;
     }
 }
