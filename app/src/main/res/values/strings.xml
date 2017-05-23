@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GitWatch</string>
+    <string name="title_user">Benutzer</string>
+    <string name="title_repository">Repository</string>
+</resources>
