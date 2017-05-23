@@ -7,11 +7,13 @@ import java.util.Date;
  */
 
 public class Commit {
+    private String id;
     private String committer;
     private String message;
-    private Date date;
+    private String date;
 
-    public Commit(String committer, String message, Date date) {
+    public Commit(String id, String committer, String message, String date) {
+        this.id = id;
         this.committer = committer;
         this.message = message;
         this.date = date;
@@ -21,11 +23,15 @@ public class Commit {
         return committer;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getMessage() {
         return message;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 }

@@ -17,7 +17,7 @@ public class UserService implements IUserService {
 
     @Override
     public List getByKeywords(String name) throws JSONException {
-        String url = "https://api.github.com/search/users?q=" + name;
+        String url = "https://api.github.com/search/users?q=" + name + "?per_page=100";
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();

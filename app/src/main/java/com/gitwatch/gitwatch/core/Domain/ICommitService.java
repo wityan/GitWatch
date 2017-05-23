@@ -1,5 +1,7 @@
 package com.gitwatch.gitwatch.core.Domain;
 
+import org.json.JSONException;
+
 import java.util.List;
 
 /**
@@ -7,6 +9,6 @@ import java.util.List;
  */
 
 public interface ICommitService extends IGitHubService{
-    List getByBranche(String branche);
-    int getCommitCount(String brancheId);
+    List getByRepoAndBranche(String repoId, String branche) throws JSONException;
+    List getByRepo(String repoId) throws JSONException;
 }

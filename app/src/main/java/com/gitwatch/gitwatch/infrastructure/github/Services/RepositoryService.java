@@ -22,7 +22,7 @@ public class RepositoryService implements IRepositoryService {
 
     @Override
     public Object getById(long id) throws JSONException {
-        String url = "https://api.github.com/repositories/"+id;
+        String url = "https://api.github.com/repositories/" + id;
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();
@@ -30,13 +30,13 @@ public class RepositoryService implements IRepositoryService {
             e.printStackTrace();
         }
 
-        return UserFactory.getObjectFromJson(json);
+        return RepositoryFactory.getObjectFromJson(json);
 
     }
 
     @Override
     public List getByKeywords(String name) throws JSONException {
-        String url = "https://api.github.com/search/repositories?q=" + name;
+        String url = "https://api.github.com/search/repositories?q=" + name + "?per_page=100";
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();
@@ -44,6 +44,6 @@ public class RepositoryService implements IRepositoryService {
             e.printStackTrace();
         }
 
-        return UserFactory.getListFromJson(json);
+        return RepositoryFactory.getListFromJson(json);
     }
 }
