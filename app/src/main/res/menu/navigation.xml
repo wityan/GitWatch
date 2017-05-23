@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/navigation_repository"
-        android:icon="@drawable/repository"
+        android:icon="@drawable/ic_repository"
         android:title="@string/title_repository" />
 
 </menu>

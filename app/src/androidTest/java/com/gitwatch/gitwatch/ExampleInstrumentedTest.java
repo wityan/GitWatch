@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.gitwatch.gitwatch", appContext.getPackageName());
+        assertEquals("com.ic_gitwatch.ic_gitwatch", appContext.getPackageName());
     }
 }
