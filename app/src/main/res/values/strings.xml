@@ -2,4 +2,6 @@
     <string name="app_name">GitWatch</string>
     <string name="title_user">Benutzer</string>
     <string name="title_repository">Repository</string>
+    <string name="title_useractivity_list">Items</string>
+    <string name="title_useractivity_detail">UserActivity Detail</string>
 </resources>
