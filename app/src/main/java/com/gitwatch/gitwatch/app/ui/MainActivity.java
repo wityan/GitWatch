@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gitwatch.gitwatch.R;
+import com.gitwatch.gitwatch.core.Domain.Model.Repository;
 import com.gitwatch.gitwatch.core.Domain.Model.User;
 import com.gitwatch.gitwatch.infrastructure.github.Services.RepositoryService;
 import com.gitwatch.gitwatch.infrastructure.github.Services.UserService;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText searchfield;
     private TextView searchfieldLable;
     private Button searchbutton;
+    private Class activityClass = UserActivityListActivity.class;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -38,9 +40,12 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_user:
                     searchfield.setHint("Benutzersuche");
                     searchfieldLable.setText("Nach Benutzer suchen");
+                    activityClass = UserActivityListActivity.class;
+                    return true;
                 case R.id.navigation_repository:
                     searchfield.setHint("Repositorysuche");
                     searchfieldLable.setText("Nach Repository suchen");
+                    activityClass = RepositoryActivityListActivity.class;
                     return true;
             }
             return false;
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         searchbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), UserActivityListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), activityClass);
                 intent.putExtra("keyword", searchfield.getText().toString());
                 startActivity(intent);
             }

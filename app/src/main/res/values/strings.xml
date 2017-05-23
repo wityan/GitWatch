@@ -4,4 +4,6 @@
     <string name="title_repository">Repository</string>
     <string name="title_useractivity_list">Items</string>
     <string name="title_useractivity_detail">UserActivity Detail</string>
+    <string name="title_repositoryactivity_list">Items</string>
+    <string name="title_repositoryactivity_detail">RepositoryActivity Detail</string>
 </resources>

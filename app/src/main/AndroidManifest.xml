@@ -23,7 +23,7 @@
         <activity
             android:name=".app.ui.UserActivityListActivity"
             android:label="@string/title_useractivity_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".app.ui.UserActivityDetailActivity"
             android:label="@string/title_useractivity_detail"
@@ -32,6 +32,19 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gitwatch.gitwatch.app.ui.UserActivityListActivity" />
+        </activity>
+        <activity
+            android:name=".app.ui.RepositoryActivityListActivity"
+            android:label="@string/title_repositoryactivity_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".app.ui.RepositoryActivityDetailActivity"
+            android:label="@string/title_repositoryactivity_detail"
+            android:parentActivityName=".app.ui.RepositoryActivityListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.gitwatch.gitwatch.app.ui.RepositoryActivityListActivity" />
         </activity>
     </application>
 

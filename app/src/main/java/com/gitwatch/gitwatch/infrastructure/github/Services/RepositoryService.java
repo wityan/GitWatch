@@ -30,7 +30,7 @@ public class RepositoryService implements IRepositoryService {
             e.printStackTrace();
         }
 
-        return UserFactory.getObjectFromJson(json);
+        return RepositoryFactory.getObjectFromJson(json);
 
     }
 
@@ -44,6 +44,6 @@ public class RepositoryService implements IRepositoryService {
             e.printStackTrace();
         }
 
-        return UserFactory.getListFromJson(json);
+        return RepositoryFactory.getListFromJson(json);
     }
 }
