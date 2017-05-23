@@ -1,4 +1,4 @@
-package com.gitwatch.gitwatch;
+package com.gitwatch.gitwatch.app.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.gitwatch.gitwatch.R;
 
 import org.w3c.dom.Text;
 
