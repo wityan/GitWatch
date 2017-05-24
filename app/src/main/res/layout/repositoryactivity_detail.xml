@@ -14,10 +14,11 @@
         android:textSize="24sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="16dp"
         android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="16dp" />
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/branches"
@@ -34,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <TextView
-        android:id="@+id/owner"
+        android:id="@+id/commitmessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -42,8 +43,9 @@
         android:textSize="24sp"
         app:layout_constraintLeft_toRightOf="@+id/ownerLable"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="16dp"
-        android:layout_marginStart="8dp" />
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/description"
@@ -60,15 +62,18 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="368dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintTop_toBottomOf="@+id/branches"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent">
 
         <include
             layout="@layout/repositoryactivity_detail_branch"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </FrameLayout>
 

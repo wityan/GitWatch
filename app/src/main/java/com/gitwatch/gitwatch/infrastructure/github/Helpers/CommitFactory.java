@@ -26,8 +26,8 @@ public class CommitFactory {
         JSONArray jsonArray = jsonArray = new JSONArray(json);
         for (int i = 0, size = jsonArray.length(); i < size; i++){
             JSONObject obj = jsonArray.getJSONObject(i);
-            JSONObject commiter = obj.getJSONObject("commit").getJSONObject("comitter");
-            commits.add(new Commit(obj.getString("sha"), commiter.getString("name"), obj.getString("message"), commiter.getString("date")));
+            JSONObject commiter = obj.getJSONObject("commit").getJSONObject("committer");
+            commits.add(new Commit(obj.getString("sha"), commiter.getString("name"), obj.getJSONObject("commit").getString("message"), commiter.getString("date")));
         }
         return commits;
     }
