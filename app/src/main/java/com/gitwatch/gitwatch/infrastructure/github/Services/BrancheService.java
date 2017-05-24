@@ -2,10 +2,8 @@ package com.gitwatch.gitwatch.infrastructure.github.Services;
 
 import com.gitwatch.gitwatch.core.Domain.IBrancheService;
 import com.gitwatch.gitwatch.core.Domain.Model.Branch;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.AsyncJsonTask;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.BrancheFactory;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.GitHubToken;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.UserFactory;
+import com.gitwatch.gitwatch.infrastructure.github.ModelFactories.BrancheFactory;
+import com.gitwatch.gitwatch.core.Domain.Objects.GitHubToken;
 
 import org.json.JSONException;
 

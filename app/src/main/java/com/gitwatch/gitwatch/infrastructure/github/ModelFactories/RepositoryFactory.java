@@ -1,4 +1,4 @@
-package com.gitwatch.gitwatch.infrastructure.github.Helpers;
+package com.gitwatch.gitwatch.infrastructure.github.ModelFactories;
 
 import com.gitwatch.gitwatch.core.Domain.Model.Repository;
 import com.gitwatch.gitwatch.core.Domain.Model.User;

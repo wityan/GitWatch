@@ -1,14 +1,8 @@
 package com.gitwatch.gitwatch.infrastructure.github.Services;
 
-import android.app.ProgressDialog;
-
-import com.gitwatch.gitwatch.core.Domain.IGitHubService;
 import com.gitwatch.gitwatch.core.Domain.IRepositoryService;
-import com.gitwatch.gitwatch.core.Domain.Model.Repository;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.AsyncJsonTask;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.GitHubToken;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.RepositoryFactory;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.UserFactory;
+import com.gitwatch.gitwatch.core.Domain.Objects.GitHubToken;
+import com.gitwatch.gitwatch.infrastructure.github.ModelFactories.RepositoryFactory;
 
 import org.json.JSONException;
 
