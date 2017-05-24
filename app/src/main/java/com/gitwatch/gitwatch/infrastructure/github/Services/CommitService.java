@@ -3,6 +3,7 @@ package com.gitwatch.gitwatch.infrastructure.github.Services;
 import com.gitwatch.gitwatch.core.Domain.ICommitService;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.AsyncJsonTask;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.CommitFactory;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.GitHubToken;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.UserFactory;
 
 import org.json.JSONException;
@@ -18,7 +19,7 @@ public class CommitService implements ICommitService{
 
     @Override
     public List getByRepoAndBranche(String repoId, String branche) throws JSONException {
-        String url = "https://api.github.com/repositories/" + repoId + "/commits?sha=" + branche + "&per_page=500;";
+        String url = "https://api.github.com/repositories/" + repoId + "/commits?sha=" + branche + "&per_page=500&authorization_request=" + GitHubToken.getToken();
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();
@@ -31,7 +32,7 @@ public class CommitService implements ICommitService{
 
     @Override
     public int getByAmountByRepoAndBranch(String repoId, String branche) throws JSONException {
-        String url = "https://api.github.com/repositories/" + repoId + "/commits?sha=" + branche + "&per_page=500;";
+        String url = "https://api.github.com/repositories/" + repoId + "/commits?sha=" + branche + "&per_page=500&authorization_request=" + GitHubToken.getToken();
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();
@@ -44,7 +45,7 @@ public class CommitService implements ICommitService{
 
     @Override
     public List getByRepo(String repoId) throws JSONException {
-        String url = "https://api.github.com/repositories/" + repoId + "?per_page=500;";
+        String url = "https://api.github.com/repositories/" + repoId + "?per_page=500&authorization_request=" + GitHubToken.getToken();
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();

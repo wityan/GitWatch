@@ -4,6 +4,7 @@ import com.gitwatch.gitwatch.core.Domain.IBrancheService;
 import com.gitwatch.gitwatch.core.Domain.Model.Branch;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.AsyncJsonTask;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.BrancheFactory;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.GitHubToken;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.UserFactory;
 
 import org.json.JSONException;
@@ -18,7 +19,7 @@ import java.util.concurrent.ExecutionException;
 public class BrancheService implements IBrancheService {
     @Override
     public List getByRepository(String repoId) throws JSONException {
-        String url = "https://api.github.com/repositories/" + repoId + "/branches?per_page=100&?authorization_request=86fc60a8d5f5a8e4f24a39c4f4c8af5eed8492f8 ";
+        String url = "https://api.github.com/repositories/" + repoId + "/branches?per_page=100&authorization_request=" + GitHubToken.getToken();
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();
