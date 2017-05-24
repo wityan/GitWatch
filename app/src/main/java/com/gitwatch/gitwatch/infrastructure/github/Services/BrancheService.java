@@ -27,10 +27,6 @@ public class BrancheService implements IBrancheService {
         }
 
         List<Branch> branches = BrancheFactory.getListFromJson(json);
-        CommitService service = new CommitService();
-        for (Branch branch: branches){
-            branch.setCommitCount(service.getByAmountByRepoAndBranch(repoId, branch.getName()));
-        }
         return branches;
     }
 

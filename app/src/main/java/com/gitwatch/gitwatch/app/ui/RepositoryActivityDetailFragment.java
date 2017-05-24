@@ -1,12 +1,18 @@
 package com.gitwatch.gitwatch.app.ui;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
@@ -79,7 +85,67 @@ public class RepositoryActivityDetailFragment extends Fragment {
 
         ((TextView) rootView.findViewById(R.id.owner)).setText(mItem.getOwner());
         ((TextView) rootView.findViewById(R.id.description)).setText(mItem.getDescription());
+        View recyclerView = rootView.findViewById(R.id.repositoryactivity_detail_branch);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
 
         return rootView;
+    }
+
+    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(mItemBranche));
+    }
+
+    public class SimpleItemRecyclerViewAdapter
+            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
+
+        private final List<Branch> mValues;
+
+        public SimpleItemRecyclerViewAdapter(List<Branch> items) {
+            mValues = items;
+        }
+
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.repositoryactivity_detail_branch_content, parent, false);
+            return new SimpleItemRecyclerViewAdapter.ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(final ViewHolder holder, int position) {
+            holder.mName.setText(mValues.get(position).getName());
+
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, RepositoryActivityDetailActivity.class);
+
+                    context.startActivity(intent);
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return mValues.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            public final View mView;
+            public final TextView mName;
+
+            public ViewHolder(View view) {
+                super(view);
+                mView = view;
+                mName = (TextView) view.findViewById(R.id.branchName);
+            }
+
+            @Override
+            public String toString() {
+                return super.toString() + " '" + mName.getText() + "'";
+            }
+        }
     }
 }

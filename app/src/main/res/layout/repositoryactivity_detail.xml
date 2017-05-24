@@ -57,15 +57,19 @@
         app:layout_constraintTop_toBottomOf="@+id/ownerLable"
         android:layout_marginStart="24dp" />
 
-    <ListView
-        android:id="@+id/brancheList"
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="368dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="7dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintTop_toBottomOf="@+id/branches"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="8dp">
+
+        <include
+            layout="@layout/repositoryactivity_detail_branch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
