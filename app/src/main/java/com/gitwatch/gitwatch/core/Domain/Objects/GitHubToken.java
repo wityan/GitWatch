@@ -5,7 +5,7 @@ package com.gitwatch.gitwatch.core.Domain.Objects;
  */
 
 public class GitHubToken {
-    private final static String token = "";
+    private final static String token = "NoTokenYouNoob";
 
     public static String getToken() {
         return token;
