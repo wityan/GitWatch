@@ -108,6 +108,7 @@ public class UserActivityListActivity extends AppCompatActivity {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, UserActivityDetailActivity.class);
                         intent.putExtra(UserActivityDetailFragment.ARG_ITEM_ID, Long.toString(holder.mItem.getId()));
+                        intent.putExtra(UserActivityDetailFragment.USERNAME, holder.mItem.getName());
                         context.startActivity(intent);
                     }
                 }

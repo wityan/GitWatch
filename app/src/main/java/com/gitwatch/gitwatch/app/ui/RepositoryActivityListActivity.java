@@ -66,75 +66,7 @@ public class RepositoryActivityListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(RepositoryList));
+        recyclerView.setAdapter(new RepositoryRecyclerAdapter(RepositoryList));
     }
 
-    public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-
-        private final List<Repository> mValues;
-
-        public SimpleItemRecyclerViewAdapter(List<Repository> items) {
-            mValues = items;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.repositoryactivity_list_content, parent, false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mItem = mValues.get(position);
-            holder.mContentView.setText(mValues.get(position).getName());
-            holder.mOwner.setText(mValues.get(position).getOwner());
-
-            holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mTwoPane) {
-                        Bundle arguments = new Bundle();
-                        arguments.putString(RepositoryActivityDetailFragment.ARG_ITEM_ID, Long.toString(holder.mItem.getId()));
-                        RepositoryActivityDetailFragment fragment = new RepositoryActivityDetailFragment();
-                        fragment.setArguments(arguments);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.repositoryactivity_detail_container, fragment)
-                                .commit();
-                    } else {
-                        Context context = v.getContext();
-                        Intent intent = new Intent(context, RepositoryActivityDetailActivity.class);
-                        intent.putExtra(RepositoryActivityDetailFragment.ARG_ITEM_ID, Long.toString(holder.mItem.getId()));
-
-                        context.startActivity(intent);
-                    }
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return mValues.size();
-        }
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mContentView;
-            public final TextView mOwner;
-            public Repository mItem;
-
-            public ViewHolder(View view) {
-                super(view);
-                mView = view;
-                mContentView = (TextView) view.findViewById(R.id.repositoryname);
-                mOwner = (TextView) view.findViewById(R.id.commitmessage);
-            }
-
-            @Override
-            public String toString() {
-                return super.toString() + " '" + mContentView.getText() + "'";
-            }
-        }
-    }
 }

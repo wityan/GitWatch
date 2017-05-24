@@ -10,7 +10,9 @@ import com.gitwatch.gitwatch.infrastructure.github.Helpers.GitHubToken;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.RepositoryFactory;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.UserFactory;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -45,6 +47,21 @@ public class RepositoryService implements IRepositoryService {
             e.printStackTrace();
         }
 
+        JSONObject object = new JSONObject(json);
+        JSONArray jsonArray = jsonArray = new JSONArray(object.getString("items"));
+        return RepositoryFactory.getListFromJson(jsonArray.toString());
+    }
+
+    public List getByUser(String username) throws JSONException {
+        String url = "https://api.github.com/users/" + username + "/repos?authorization_request=" + GitHubToken.getToken();
+        String json = "";
+        try {
+            json = new AsyncJsonTask().execute(url).get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
         return RepositoryFactory.getListFromJson(json);
+
     }
 }

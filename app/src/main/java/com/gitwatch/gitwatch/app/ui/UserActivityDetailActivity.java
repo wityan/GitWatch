@@ -46,6 +46,8 @@ public class UserActivityDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
+            arguments.putString(UserActivityDetailFragment.USERNAME,
+                    getIntent().getStringExtra(UserActivityDetailFragment.USERNAME));
             arguments.putString(UserActivityDetailFragment.ARG_ITEM_ID,
                     getIntent().getStringExtra(UserActivityDetailFragment.ARG_ITEM_ID));
             UserActivityDetailFragment fragment = new UserActivityDetailFragment();

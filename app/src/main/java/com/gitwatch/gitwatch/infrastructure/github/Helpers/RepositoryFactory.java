@@ -22,8 +22,7 @@ public class RepositoryFactory {
 
     public static List<Repository> getListFromJson(String json) throws JSONException {
         List<Repository> repositories = new ArrayList<Repository>();
-        JSONObject object = new JSONObject(json);
-        JSONArray jsonArray = jsonArray = new JSONArray(object.getString("items"));
+        JSONArray jsonArray = jsonArray = new JSONArray(json);
         for (int i = 0, size = jsonArray.length(); i < size; i++){
             JSONObject obj = jsonArray.getJSONObject(i);
             repositories.add(new Repository(obj.getLong("id"), obj.getString("name"), obj.getJSONObject("owner").getString("login")));

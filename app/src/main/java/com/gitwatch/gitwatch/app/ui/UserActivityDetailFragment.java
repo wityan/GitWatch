@@ -1,19 +1,28 @@
 package com.gitwatch.gitwatch.app.ui;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
+import com.gitwatch.gitwatch.core.Domain.Model.Branch;
+import com.gitwatch.gitwatch.core.Domain.Model.Repository;
 import com.gitwatch.gitwatch.core.Domain.Model.User;
+import com.gitwatch.gitwatch.infrastructure.github.Services.RepositoryService;
 import com.gitwatch.gitwatch.infrastructure.github.Services.UserService;
 
 import org.json.JSONException;
+
+import java.util.List;
 
 /**
  * A fragment representing a single UserActivity detail screen.
@@ -27,11 +36,14 @@ public class UserActivityDetailFragment extends Fragment {
      * represents.
      */
     public static final String ARG_ITEM_ID = "item_id";
+    public static final String USERNAME = "user";
+
 
     /**
      * The dummy content this fragment is presenting.
      */
     private User mItem;
+    private List<Repository> UserRepositoryList;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -50,6 +62,12 @@ public class UserActivityDetailFragment extends Fragment {
             // to load content from a content provider.
 
             String id = getArguments().getString(ARG_ITEM_ID);
+            String username = getArguments().getString(USERNAME);
+            try {
+                UserRepositoryList = new RepositoryService().getByUser(username);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
             try {
                 mItem = (User) new UserService().getById(Long.parseLong(id));
@@ -77,6 +95,16 @@ public class UserActivityDetailFragment extends Fragment {
             }
         }
 
+        View recyclerView = rootView.findViewById(R.id.repositoryactivity_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
+
         return rootView;
     }
+
+    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        recyclerView.setAdapter(new RepositoryRecyclerAdapter(UserRepositoryList));
+    }
+
+
 }
