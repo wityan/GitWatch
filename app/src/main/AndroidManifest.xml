@@ -47,6 +47,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gitwatch.gitwatch.app.ui.RepositoryActivityListActivity" />
         </activity>
+        <activity android:name=".app.ui.CommitActivityListActivity"></activity>
     </application>
 
 </manifest>

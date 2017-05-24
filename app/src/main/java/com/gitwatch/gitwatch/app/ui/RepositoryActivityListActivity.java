@@ -7,8 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -137,7 +135,7 @@ public class RepositoryActivityListActivity extends AppCompatActivity {
                 super(view);
                 mView = view;
                 mContentView = (TextView) view.findViewById(R.id.repositoryname);
-                mOwner = (TextView) view.findViewById(R.id.owner);
+                mOwner = (TextView) view.findViewById(R.id.commitmessage);
             }
 
             @Override

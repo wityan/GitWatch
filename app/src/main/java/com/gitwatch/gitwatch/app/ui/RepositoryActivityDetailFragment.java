@@ -11,8 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
@@ -89,8 +87,9 @@ public class RepositoryActivityDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.repositoryactivity_detail, container, false);
 
 
-        ((TextView) rootView.findViewById(R.id.owner)).setText(mItem.getOwner());
+        ((TextView) rootView.findViewById(R.id.commitmessage)).setText(mItem.getOwner());
         ((TextView) rootView.findViewById(R.id.description)).setText(mItem.getDescription());
+
         View recyclerView = rootView.findViewById(R.id.repositoryactivity_detail_branch);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -121,13 +120,14 @@ public class RepositoryActivityDetailFragment extends Fragment {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mName.setText(mValues.get(position).getName());
-
+            holder.mItem = mValues.get(position);
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, RepositoryActivityDetailActivity.class);
-
+                    Intent intent = new Intent(context, CommitActivityListActivity.class);
+                    intent.putExtra("branch", holder.mItem.getName());
+                    intent.putExtra("repository",Long.toString(mItem.getId()));
                     context.startActivity(intent);
                 }
             });
@@ -141,6 +141,7 @@ public class RepositoryActivityDetailFragment extends Fragment {
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mName;
+            public Branch mItem;
 
             public ViewHolder(View view) {
                 super(view);

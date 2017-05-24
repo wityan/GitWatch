@@ -6,5 +6,4 @@
 .DS_Store
 /build
 /captures
-.externalNativeBuild
 app/src/main/java/com/gitwatch/gitwatch/infrastructure/github/Helpers/GitHubToken.java
