@@ -36,7 +36,7 @@ public class RepositoryService implements IRepositoryService {
 
     @Override
     public List getByKeywords(String name) throws JSONException {
-        String url = "https://api.github.com/search/repositories?q=" + name + "?per_page=100";
+        String url = "https://api.github.com/search/repositories?q=" + name + "&per_page=100";
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();
