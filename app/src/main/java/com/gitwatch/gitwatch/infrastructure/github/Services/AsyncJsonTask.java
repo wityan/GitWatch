@@ -1,4 +1,4 @@
-package com.gitwatch.gitwatch.infrastructure.github.Helpers;
+package com.gitwatch.gitwatch.infrastructure.github.Services;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;

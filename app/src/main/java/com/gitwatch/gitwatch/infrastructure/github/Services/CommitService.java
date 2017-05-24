@@ -1,10 +1,8 @@
 package com.gitwatch.gitwatch.infrastructure.github.Services;
 
 import com.gitwatch.gitwatch.core.Domain.ICommitService;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.AsyncJsonTask;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.CommitFactory;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.GitHubToken;
-import com.gitwatch.gitwatch.infrastructure.github.Helpers.UserFactory;
+import com.gitwatch.gitwatch.infrastructure.github.ModelFactories.CommitFactory;
+import com.gitwatch.gitwatch.core.Domain.Objects.GitHubToken;
 
 import org.json.JSONException;
 

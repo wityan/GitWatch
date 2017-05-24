@@ -1,9 +1,12 @@
 package com.gitwatch.gitwatch.app.ui;
 
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +18,8 @@ import android.widget.Toast;
 import com.gitwatch.gitwatch.R;
 import com.gitwatch.gitwatch.core.Domain.Model.Repository;
 import com.gitwatch.gitwatch.core.Domain.Model.User;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.AlertHelper;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.NetworkStateHelper;
 import com.gitwatch.gitwatch.infrastructure.github.Services.RepositoryService;
 import com.gitwatch.gitwatch.infrastructure.github.Services.UserService;
 
@@ -66,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
 
         searchbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                if (!NetworkStateHelper.hasNetwork(getBaseContext())){
+                    AlertHelper.showInfoAlert(v.getContext(), "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok");
+                    return;
+                }
                 Intent intent = new Intent(getApplicationContext(), activityClass);
                 intent.putExtra("keyword", searchfield.getText().toString());
                 startActivity(intent);

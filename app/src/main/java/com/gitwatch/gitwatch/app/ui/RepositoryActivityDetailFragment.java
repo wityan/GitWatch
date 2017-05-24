@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.gitwatch.gitwatch.R;
 import com.gitwatch.gitwatch.core.Domain.Model.Branch;
 import com.gitwatch.gitwatch.core.Domain.Model.Repository;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.AlertHelper;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.NetworkStateHelper;
 import com.gitwatch.gitwatch.infrastructure.github.Services.BrancheService;
 import com.gitwatch.gitwatch.infrastructure.github.Services.RepositoryService;
 
@@ -60,6 +62,10 @@ public class RepositoryActivityDetailFragment extends Fragment {
 
             String id = getArguments().getString(ARG_ITEM_ID);
 
+            if (!NetworkStateHelper.hasNetwork(this.getContext())){
+                AlertHelper.showInfoAlert(this.getContext(), "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok");
+                return;
+            }
             try {
                 mItem = (Repository) new RepositoryService().getById(Long.parseLong(id));
                 mItemBranche = new BrancheService().getByRepository(id);
