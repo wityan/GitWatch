@@ -30,6 +30,19 @@ public class CommitService implements ICommitService{
     }
 
     @Override
+    public int getByAmountByRepoAndBranch(String repoId, String branche) throws JSONException {
+        String url = "https://api.github.com/repositories/" + repoId + "/commits?sha=" + branche + "&per_page=500;";
+        String json = "";
+        try {
+            json = new AsyncJsonTask().execute(url).get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return CommitFactory.getLengthOfJsonArray(json);
+    }
+
+    @Override
     public List getByRepo(String repoId) throws JSONException {
         String url = "https://api.github.com/repositories/" + repoId + "?per_page=500;";
         String json = "";

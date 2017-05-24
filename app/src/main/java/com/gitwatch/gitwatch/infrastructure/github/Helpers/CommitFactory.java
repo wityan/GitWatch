@@ -23,13 +23,18 @@ public class CommitFactory {
 
     public static List<Commit> getListFromJson(String json) throws JSONException {
         List<Commit> commits = new ArrayList<Commit>();
-        JSONObject object = new JSONObject(json);
-        JSONArray jsonArray = jsonArray = new JSONArray(object.getString("items"));
+        JSONArray jsonArray = jsonArray = new JSONArray(json);
         for (int i = 0, size = jsonArray.length(); i < size; i++){
             JSONObject obj = jsonArray.getJSONObject(i);
             JSONObject commiter = obj.getJSONObject("commit").getJSONObject("comitter");
             commits.add(new Commit(obj.getString("sha"), commiter.getString("name"), obj.getString("message"), commiter.getString("date")));
         }
         return commits;
+    }
+
+    public static int getLengthOfJsonArray(String json) throws JSONException {
+        List<Commit> commits = new ArrayList<Commit>();
+        JSONArray jsonArray = jsonArray = new JSONArray(json);
+        return jsonArray.length();
     }
 }

@@ -11,4 +11,5 @@ import java.util.List;
 public interface ICommitService extends IGitHubService{
     List getByRepoAndBranche(String repoId, String branche) throws JSONException;
     List getByRepo(String repoId) throws JSONException;
+    int getByAmountByRepoAndBranch(String repoId, String branche) throws JSONException;
 }

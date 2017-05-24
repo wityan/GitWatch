@@ -22,8 +22,7 @@ public class BrancheFactory {
 
     public static List<Branch> getListFromJson(String json) throws JSONException {
         List<Branch> branches = new ArrayList<Branch>();
-        JSONObject object = new JSONObject(json);
-        JSONArray jsonArray = jsonArray = new JSONArray(object.getString("items"));
+        JSONArray jsonArray = jsonArray = new JSONArray(json);
         for (int i = 0, size = jsonArray.length(); i < size; i++){
             JSONObject obj = jsonArray.getJSONObject(i);
             branches.add(new Branch(obj.getString("name")));
