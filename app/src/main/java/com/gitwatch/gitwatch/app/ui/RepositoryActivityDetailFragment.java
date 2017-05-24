@@ -10,11 +10,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
-import com.gitwatch.gitwatch.app.ui.dummy.DummyContent;
+import com.gitwatch.gitwatch.core.Domain.Model.Branch;
 import com.gitwatch.gitwatch.core.Domain.Model.Repository;
+import com.gitwatch.gitwatch.infrastructure.github.Services.BrancheService;
 import com.gitwatch.gitwatch.infrastructure.github.Services.RepositoryService;
 
 import org.json.JSONException;
+
+import java.util.List;
 
 /**
  * A fragment representing a single RepositoryActivity detail screen.
@@ -33,6 +36,7 @@ public class RepositoryActivityDetailFragment extends Fragment {
      * The dummy content this fragment is presenting.
      */
     private Repository mItem;
+    private List<Branch> mItemBranche;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -54,6 +58,7 @@ public class RepositoryActivityDetailFragment extends Fragment {
 
             try {
                 mItem = (Repository) new RepositoryService().getById(Long.parseLong(id));
+                mItemBranche = new BrancheService().getByRepository(id);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

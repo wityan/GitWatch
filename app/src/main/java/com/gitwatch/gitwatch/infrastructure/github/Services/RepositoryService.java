@@ -22,7 +22,7 @@ public class RepositoryService implements IRepositoryService {
 
     @Override
     public Object getById(long id) throws JSONException {
-        String url = "https://api.github.com/repositories/" + id;
+        String url = "https://api.github.com/repositories/" + id + "?authorization_request=86fc60a8d5f5a8e4f24a39c4f4c8af5eed8492f8";
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();

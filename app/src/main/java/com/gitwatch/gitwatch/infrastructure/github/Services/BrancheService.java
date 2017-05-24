@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
 public class BrancheService implements IBrancheService {
     @Override
     public List getByRepository(String repoId) throws JSONException {
-        String url = "https://api.github.com/repositories/" + repoId + "/branches?per_page=100";
+        String url = "https://api.github.com/repositories/" + repoId + "/branches?per_page=100&?authorization_request=86fc60a8d5f5a8e4f24a39c4f4c8af5eed8492f8 ";
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();
@@ -27,8 +27,9 @@ public class BrancheService implements IBrancheService {
         }
 
         List<Branch> branches = BrancheFactory.getListFromJson(json);
+        CommitService service = new CommitService();
         for (Branch branch: branches){
-            branch.setCommitCount(new CommitService().getByRepoAndBranche(repoId, branch.getName()));
+            branch.setCommitCount(service.getByAmountByRepoAndBranch(repoId, branch.getName()));
         }
         return branches;
     }
