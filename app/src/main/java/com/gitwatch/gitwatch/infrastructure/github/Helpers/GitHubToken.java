@@ -5,7 +5,7 @@ package com.gitwatch.gitwatch.infrastructure.github.Helpers;
  */
 
 public class GitHubToken {
-    private final static String token = "681f8fc91733c281760bbefb803dc81ab4d0ce4d";
+    private final static String token = "";
 
     public static String getToken() {
         return token;

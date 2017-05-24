@@ -3,6 +3,7 @@
     package="com.gitwatch.gitwatch">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -36,7 +37,7 @@
         <activity
             android:name=".app.ui.RepositoryActivityListActivity"
             android:label="@string/title_repositoryactivity_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".app.ui.RepositoryActivityDetailActivity"
             android:label="@string/title_repositoryactivity_detail"

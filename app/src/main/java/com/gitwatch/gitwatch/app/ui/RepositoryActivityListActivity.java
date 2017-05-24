@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.gitwatch.gitwatch.R;
 import com.gitwatch.gitwatch.core.Domain.Model.Repository;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.AlertHelper;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.NetworkStateHelper;
 import com.gitwatch.gitwatch.infrastructure.github.Services.RepositoryService;
 
 import org.json.JSONException;
@@ -44,6 +46,11 @@ public class RepositoryActivityListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_repositoryactivity_list);
 
         String keyword = getIntent().getStringExtra("keyword");
+
+        if (!NetworkStateHelper.hasNetwork(this)){
+            AlertHelper.showInfoAlert(this, "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok");
+            return;
+        }
         try {
             RepositoryList = new RepositoryService().getByKeywords(keyword);
         } catch (JSONException e) {

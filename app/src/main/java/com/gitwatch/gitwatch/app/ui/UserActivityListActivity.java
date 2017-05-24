@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
 import com.gitwatch.gitwatch.core.Domain.Model.User;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.AlertHelper;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.NetworkStateHelper;
 import com.gitwatch.gitwatch.infrastructure.github.Services.UserService;
 
 import org.json.JSONException;
@@ -45,6 +47,13 @@ public class UserActivityListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_useractivity_list);
 
         String keyword = getIntent().getStringExtra("keyword");
+
+        if (!NetworkStateHelper.hasNetwork(this)){
+            AlertHelper.showInfoAlert(this, "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok");
+            startActivity(new Intent(this, MainActivity.class));
+            return;
+        }
+
         try {
             UserList = new UserService().getByKeywords(keyword);
         } catch (JSONException e) {

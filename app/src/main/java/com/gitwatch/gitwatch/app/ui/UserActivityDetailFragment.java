@@ -1,6 +1,7 @@
 package com.gitwatch.gitwatch.app.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
 import com.gitwatch.gitwatch.core.Domain.Model.User;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.AlertHelper;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.NetworkStateHelper;
 import com.gitwatch.gitwatch.infrastructure.github.Services.UserService;
 
 import org.json.JSONException;
@@ -50,6 +53,12 @@ public class UserActivityDetailFragment extends Fragment {
             // to load content from a content provider.
 
             String id = getArguments().getString(ARG_ITEM_ID);
+
+            if (!NetworkStateHelper.hasNetwork(this.getContext())){
+                AlertHelper.showInfoAlert(this.getContext(), "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok");
+                startActivity(new Intent(this.getContext(), MainActivity.class));
+                return;
+            }
 
             try {
                 mItem = (User) new UserService().getById(Long.parseLong(id));
