@@ -18,7 +18,6 @@ public class User{
     private String name;
     private double score;
     private String bio;
-    private int repositoryCount;
 
     public long getId() {
         return id;

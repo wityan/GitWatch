@@ -19,13 +19,13 @@ public class AlertHelper {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                if (targetActivity == null){
+                if (targetActivity == null) {
                     return;
                 }
                 final Class activity = targetActivity;
                 context.startActivity(new Intent(context, activity));
             }
-        });
+        })
         dialog.show();
     }
 }
