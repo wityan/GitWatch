@@ -42,7 +42,7 @@ public class RepositoryActivityDetailFragment extends Fragment {
      * The dummy content this fragment is presenting.
      */
     private Repository mItem;
-    private List<Branch> mItemBranche;
+    private List mItemBranche;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
