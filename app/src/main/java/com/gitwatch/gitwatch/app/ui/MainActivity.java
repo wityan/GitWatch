@@ -72,7 +72,11 @@ public class MainActivity extends AppCompatActivity {
         searchbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (!NetworkStateHelper.hasNetwork(getBaseContext())){
-                    AlertHelper.showInfoAlert(v.getContext(), "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok");
+                    AlertHelper.showInfoAlert(v.getContext(), "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok", null);
+                    return;
+                }
+                else if (searchfield.getText().toString().isEmpty()){
+                    AlertHelper.showInfoAlert(v.getContext(), "Kein Suchbegriff eingegeben", "Es können keine Suchabfragen ohne Suchbegriff durchgeführt werden", "Ok", null);
                     return;
                 }
                 Intent intent = new Intent(getApplicationContext(), activityClass);

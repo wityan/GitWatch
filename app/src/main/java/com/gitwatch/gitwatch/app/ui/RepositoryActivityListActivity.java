@@ -45,10 +45,6 @@ public class RepositoryActivityListActivity extends AppCompatActivity {
 
         String keyword = getIntent().getStringExtra("keyword");
 
-        if (!NetworkStateHelper.hasNetwork(this)){
-            AlertHelper.showInfoAlert(this, "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok");
-            return;
-        }
         try {
             RepositoryList = new RepositoryService().getByKeywords(keyword);
         } catch (JSONException e) {

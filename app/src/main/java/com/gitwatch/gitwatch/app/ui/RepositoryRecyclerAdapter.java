@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
 import com.gitwatch.gitwatch.core.Domain.Model.Repository;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.AlertHelper;
+import com.gitwatch.gitwatch.infrastructure.github.Helpers.NetworkStateHelper;
 
 import java.util.List;
 
@@ -43,6 +45,10 @@ public class RepositoryRecyclerAdapter
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!NetworkStateHelper.hasNetwork(v.getContext())){
+                    AlertHelper.showInfoAlert(v.getContext(), "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok", null);
+                    return;
+                }
                 Context context = v.getContext();
                 Intent intent = new Intent(context, RepositoryActivityDetailActivity.class);
                 intent.putExtra(RepositoryActivityDetailFragment.ARG_ITEM_ID, Long.toString(holder.mItem.getId()));
@@ -54,6 +60,9 @@ public class RepositoryRecyclerAdapter
 
     @Override
     public int getItemCount() {
+        if (mValues == null){
+            return 0;
+        }
         return mValues.size();
     }
 

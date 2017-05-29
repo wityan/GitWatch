@@ -47,17 +47,15 @@ public class UserActivityListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_useractivity_list);
 
         String keyword = getIntent().getStringExtra("keyword");
-
-        if (!NetworkStateHelper.hasNetwork(this)){
-            AlertHelper.showInfoAlert(this, "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok");
-            startActivity(new Intent(this, MainActivity.class));
-            return;
-        }
-
         try {
             UserList = new UserService().getByKeywords(keyword);
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+
+        if(UserList.isEmpty()){
+            AlertHelper.showInfoAlert(this, "Keine Suchresultate", "Für diesen Suchbegriff konnten keine Suchresultate gefunden werden", "Ok", MainActivity.class);
+            return;
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -105,6 +103,10 @@ public class UserActivityListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!NetworkStateHelper.hasNetwork(v.getContext())){
+                        AlertHelper.showInfoAlert(v.getContext(), "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok", null);
+                        return;
+                    }
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
                         arguments.putString(UserActivityDetailFragment.ARG_ITEM_ID, Long.toString(holder.mItem.getId()));
@@ -126,6 +128,9 @@ public class UserActivityListActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
+            if (mValues == null){
+                return 0;
+            }
             return mValues.size();
         }
 

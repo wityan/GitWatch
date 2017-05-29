@@ -61,11 +61,6 @@ public class RepositoryActivityDetailFragment extends Fragment {
             // to load content from a content provider.
 
             String id = getArguments().getString(ARG_ITEM_ID);
-
-            if (!NetworkStateHelper.hasNetwork(this.getContext())){
-                AlertHelper.showInfoAlert(this.getContext(), "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok");
-                return;
-            }
             try {
                 mItem = (Repository) new RepositoryService().getById(Long.parseLong(id));
                 mItemBranche = new BrancheService().getByRepository(id);
@@ -88,7 +83,11 @@ public class RepositoryActivityDetailFragment extends Fragment {
 
 
         ((TextView) rootView.findViewById(R.id.commitmessage)).setText(mItem.getOwner());
-        ((TextView) rootView.findViewById(R.id.description)).setText(mItem.getDescription());
+        if(mItem.getDescription() == "null"){
+            ((TextView) rootView.findViewById(R.id.description)).setText("Keine Beschreibung vorhanden");
+        } else {
+            ((TextView) rootView.findViewById(R.id.description)).setText(mItem.getDescription());
+        }
 
         View recyclerView = rootView.findViewById(R.id.repositoryactivity_detail_branch);
         assert recyclerView != null;
@@ -124,6 +123,10 @@ public class RepositoryActivityDetailFragment extends Fragment {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!NetworkStateHelper.hasNetwork(v.getContext())){
+                        AlertHelper.showInfoAlert(v.getContext(), "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok", null);
+                        return;
+                    }
                     Context context = v.getContext();
                     Intent intent = new Intent(context, CommitActivityListActivity.class);
                     intent.putExtra("branch", holder.mItem.getName());
@@ -135,6 +138,9 @@ public class RepositoryActivityDetailFragment extends Fragment {
 
         @Override
         public int getItemCount() {
+            if (mValues == null){
+                return 0;
+            }
             return mValues.size();
         }
 

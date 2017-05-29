@@ -68,12 +68,6 @@ public class UserActivityDetailFragment extends Fragment {
                 e.printStackTrace();
             }
 
-            if (!NetworkStateHelper.hasNetwork(this.getContext())){
-                AlertHelper.showInfoAlert(this.getContext(), "Keine Internetverbindung", "Es können keine Suchabfragen ohne Internet durchgeführt werden", "Ok");
-                startActivity(new Intent(this.getContext(), MainActivity.class));
-                return;
-            }
-
             try {
                 mItem = (User) new UserService().getById(Long.parseLong(id));
             } catch (JSONException e) {
@@ -97,6 +91,8 @@ public class UserActivityDetailFragment extends Fragment {
         if (mItem != null) {
             if(mItem.getBio() != "null"){
                 ((TextView) rootView.findViewById(R.id.useractivity_detail)).setText(mItem.getBio());
+            } else {
+                ((TextView) rootView.findViewById(R.id.useractivity_detail)).setText("Keine Bio vorhanden");
             }
         }
 
