@@ -14,7 +14,7 @@
         android:padding="16dp"
         android:text="Hier kommt Text"
         android:textIsSelectable="true"
-        tools:context="com.gitwatch.gitwatch.app.ui.UserActivityDetailFragment"
+        tools:context="com.gitwatch.gitwatch.app.ui.User.UserActivityDetailFragment"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
 

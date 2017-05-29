@@ -1,1 +1,2 @@
 /build
+src/main/java/com/gitwatch/gitwatch/core/Domain/Objects/GitHubToken.java

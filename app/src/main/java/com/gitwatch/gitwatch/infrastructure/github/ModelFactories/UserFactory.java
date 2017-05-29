@@ -17,7 +17,7 @@ public class UserFactory{
 
     public static User getObjectFromJson(String json) throws JSONException {
         JSONObject obj = new JSONObject(json);
-        return new User(obj.getLong("id"), obj.getString("login"), obj.getString("bio"), obj.getInt("public_repos"));
+        return new User(obj.getLong("id"), obj.getString("login"), obj.getString("bio"));
     }
 
     public static List<User> getListFromJson(String json) throws JSONException {

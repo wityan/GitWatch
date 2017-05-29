@@ -1,4 +1,4 @@
-package com.gitwatch.gitwatch.app.ui;
+package com.gitwatch.gitwatch.app.ui.Commit;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,7 +22,7 @@ import java.util.List;
 
 public class CommitActivityListActivity extends AppCompatActivity {
 
-    private List<Commit> CommitList;
+    private List<Commit> commitList;
     private String branch;
 
     @Override
@@ -34,7 +34,7 @@ public class CommitActivityListActivity extends AppCompatActivity {
         String repositoryId = getIntent().getStringExtra("repository");
 
         try {
-            CommitList = new CommitService().getByRepoAndBranche(repositoryId,branch);
+            commitList = new CommitService().getByRepoAndBranche(repositoryId,branch);
         } catch (JSONException e) {
             e.printStackTrace();
             finish();
@@ -49,7 +49,7 @@ public class CommitActivityListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(CommitList));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(commitList));
     }
 
     public class SimpleItemRecyclerViewAdapter

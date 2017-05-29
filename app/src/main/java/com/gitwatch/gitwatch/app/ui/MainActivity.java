@@ -1,33 +1,21 @@
 package com.gitwatch.gitwatch.app.ui;
 
-import android.app.DialogFragment;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gitwatch.gitwatch.R;
-import com.gitwatch.gitwatch.core.Domain.Model.Repository;
-import com.gitwatch.gitwatch.core.Domain.Model.User;
+import com.gitwatch.gitwatch.app.ui.Repository.RepositoryActivityListActivity;
+import com.gitwatch.gitwatch.app.ui.User.UserActivityListActivity;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.AlertHelper;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.NetworkStateHelper;
-import com.gitwatch.gitwatch.infrastructure.github.Services.RepositoryService;
-import com.gitwatch.gitwatch.infrastructure.github.Services.UserService;
-
-import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 

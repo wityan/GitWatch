@@ -22,32 +22,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".app.ui.UserActivityListActivity"
+            android:name=".app.ui.User.UserActivityListActivity"
             android:label="@string/title_useractivity_list"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTop"/>
         <activity
-            android:name=".app.ui.UserActivityDetailActivity"
+            android:name=".app.ui.User.UserActivityDetailActivity"
             android:label="@string/title_useractivity_detail"
-            android:parentActivityName=".app.ui.UserActivityListActivity"
+            android:parentActivityName=".app.ui.User.UserActivityListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.gitwatch.gitwatch.app.ui.UserActivityListActivity" />
+                android:value="com.gitwatch.gitwatch.app.ui.User.UserActivityListActivity" />
         </activity>
         <activity
-            android:name=".app.ui.RepositoryActivityListActivity"
+            android:name=".app.ui.Repository.RepositoryActivityListActivity"
             android:label="@string/title_repositoryactivity_list"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTop"/>
         <activity
-            android:name=".app.ui.RepositoryActivityDetailActivity"
+            android:name=".app.ui.Repository.RepositoryActivityDetailActivity"
             android:label="@string/title_repositoryactivity_detail"
-            android:parentActivityName=".app.ui.RepositoryActivityListActivity"
+            android:parentActivityName=".app.ui.Repository.RepositoryActivityListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.gitwatch.gitwatch.app.ui.RepositoryActivityListActivity" />
+                android:value="com.gitwatch.gitwatch.app.ui.Repository.RepositoryActivityListActivity" />
         </activity>
-        <activity android:name=".app.ui.CommitActivityListActivity"></activity>
+        <activity android:name=".app.ui.Commit.CommitActivityListActivity"></activity>
     </application>
 
 </manifest>

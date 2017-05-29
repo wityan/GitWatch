@@ -1,8 +1,7 @@
-package com.gitwatch.gitwatch.app.ui;
+package com.gitwatch.gitwatch.app.ui.Repository;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +15,7 @@ import com.gitwatch.gitwatch.infrastructure.github.Helpers.NetworkStateHelper;
 
 import java.util.List;
 
-/**
- * Created by bwitty on 24.05.2017.
- */
-
-public class RepositoryRecyclerAdapter
-        extends RecyclerView.Adapter<RepositoryRecyclerAdapter.ViewHolder> {
+public class RepositoryRecyclerAdapter extends RecyclerView.Adapter<RepositoryRecyclerAdapter.ViewHolder> {
 
     private final List<Repository> mValues;
 

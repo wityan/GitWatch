@@ -1,4 +1,4 @@
-package com.gitwatch.gitwatch.app.ui;
+package com.gitwatch.gitwatch.app.ui.Repository;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
+import com.gitwatch.gitwatch.app.ui.Commit.CommitActivityListActivity;
 import com.gitwatch.gitwatch.core.Domain.Model.Branch;
 import com.gitwatch.gitwatch.core.Domain.Model.Repository;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.AlertHelper;
@@ -25,29 +26,12 @@ import org.json.JSONException;
 
 import java.util.List;
 
-/**
- * A fragment representing a single RepositoryActivity detail screen.
- * This fragment is either contained in a {@link RepositoryActivityListActivity}
- * in two-pane mode (on tablets) or a {@link RepositoryActivityDetailActivity}
- * on handsets.
- */
 public class RepositoryActivityDetailFragment extends Fragment {
-    /**
-     * The fragment argument representing the item ID that this fragment
-     * represents.
-     */
     public static final String ARG_ITEM_ID = "item_id";
 
-    /**
-     * The dummy content this fragment is presenting.
-     */
     private Repository mItem;
     private List mItemBranche;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public RepositoryActivityDetailFragment() {
     }
 
@@ -56,9 +40,6 @@ public class RepositoryActivityDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
 
             String id = getArguments().getString(ARG_ITEM_ID);
             try {
@@ -130,7 +111,7 @@ public class RepositoryActivityDetailFragment extends Fragment {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, CommitActivityListActivity.class);
                     intent.putExtra("branch", holder.mItem.getName());
-                    intent.putExtra("repository",Long.toString(mItem.getId()));
+                    intent.putExtra("repository", Long.toString(mItem.getId()));
                     context.startActivity(intent);
                 }
             });

@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.gitwatch.gitwatch.app.ui.CommitActivityListActivity"
+    tools:context="com.gitwatch.gitwatch.app.ui.Commit.CommitActivityListActivity"
     tools:listitem="@layout/commitactivity_list_content" />

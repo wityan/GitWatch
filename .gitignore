@@ -7,3 +7,4 @@
 /build
 /captures
 app/src/main/java/com/gitwatch/gitwatch/infrastructure/github/Helpers/GitHubToken.java
+app/src/main/java/com/gitwatch/gitwatch/core/Domain/Objects/GitHubToken.java

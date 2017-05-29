@@ -8,11 +8,10 @@ public class User{
         this.score = score;
     }
 
-    public User(long id, String name, String bio, int repositoryCount) {
+    public User(long id, String name, String bio) {
         this.id = id;
         this.name = name;
         this.bio = bio;
-        this.repositoryCount = repositoryCount;
     }
 
     private long id;
@@ -35,9 +34,5 @@ public class User{
 
     public String getBio() {
         return bio;
-    }
-
-    public int getRepositoryCount() {
-        return repositoryCount;
     }
 }

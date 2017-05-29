@@ -54,6 +54,7 @@ public class CommitService implements ICommitService{
         return CommitFactory.getListFromJson(json);
     }
 
+    // Special case of IGitHubService, because Branch dosent has an id.
     @Override
     public Object getById(long id) throws JSONException {
         return null;
