@@ -9,15 +9,11 @@ import org.json.JSONException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-/**
- * Created by bziswn on 23.05.2017.
- */
-
 public class CommitService implements ICommitService{
 
     @Override
-    public List getByRepoAndBranche(String repoId, String branche) throws JSONException {
-        String url = "https://api.github.com/repositories/" + repoId + "/commits?sha=" + branche + "&per_page=500&authorization_request=" + GitHubToken.getToken();
+    public List getByRepoAndBranch(String repoId, String branch) throws JSONException {
+        String url = "https://api.github.com/repositories/" + repoId + "/commits?sha=" + branch + "&per_page=500&authorization_request=" + GitHubToken.getToken();
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();
@@ -29,8 +25,8 @@ public class CommitService implements ICommitService{
     }
 
     @Override
-    public int getByAmountByRepoAndBranch(String repoId, String branche) throws JSONException {
-        String url = "https://api.github.com/repositories/" + repoId + "/commits?sha=" + branche + "&per_page=500&authorization_request=" + GitHubToken.getToken();
+    public int getByAmountByRepoAndBranch(String repoId, String branch) throws JSONException {
+        String url = "https://api.github.com/repositories/" + repoId + "/commits?sha=" + branch + "&per_page=500&authorization_request=" + GitHubToken.getToken();
         String json = "";
         try {
             json = new AsyncJsonTask().execute(url).get();

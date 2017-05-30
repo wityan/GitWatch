@@ -10,11 +10,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by bziswn on 23.05.2017.
- */
+public class BranchFactory {
 
-public class BrancheFactory {
     public static Branch getObjectFromJson(String json) throws JSONException {
         JSONObject obj = new JSONObject(json);
         return new Branch(obj.getString("name"));

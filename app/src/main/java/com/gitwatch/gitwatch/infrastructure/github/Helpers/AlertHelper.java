@@ -6,15 +6,12 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 
-/**
- * Created by bziswn on 24.05.2017.
- */
-
 public class AlertHelper {
     public static void showInfoAlert(final Context context, String title, String message, String buttonText, @Nullable final Class targetActivity){
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
         dialog.setTitle(title);
         dialog.setMessage(message);
+
         dialog.setPositiveButton(buttonText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -25,7 +22,8 @@ public class AlertHelper {
                 final Class activity = targetActivity;
                 context.startActivity(new Intent(context, activity));
             }
-        })
+        });
+
         dialog.show();
     }
 }

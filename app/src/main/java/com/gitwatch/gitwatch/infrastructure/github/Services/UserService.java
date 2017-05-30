@@ -9,10 +9,6 @@ import org.json.JSONException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-/**
- * Created by bziswn on 23.05.2017.
- */
-
 public class UserService implements IUserService {
 
     @Override

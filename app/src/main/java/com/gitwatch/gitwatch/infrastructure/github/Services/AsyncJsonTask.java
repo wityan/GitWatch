@@ -14,13 +14,9 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-/**
- * Created by bziswn on 23.05.2017.
- */
-
 public class AsyncJsonTask extends AsyncTask<String, Void, String> {
 
-    private static String TAG = "Suche";
+    private static String TAG = "Lade";
 
     @Override
     protected String doInBackground(String... params) {

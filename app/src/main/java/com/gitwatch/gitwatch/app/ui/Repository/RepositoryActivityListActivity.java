@@ -19,7 +19,6 @@ import java.util.List;
 
 public class RepositoryActivityListActivity extends AppCompatActivity {
 
-    private boolean mTwoPane;
     private List<Repository> repositoryList;
 
     @Override
@@ -46,14 +45,6 @@ public class RepositoryActivityListActivity extends AppCompatActivity {
         View recyclerView = findViewById(R.id.repositoryactivity_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
-
-        if (findViewById(R.id.repositoryactivity_detail_container) != null) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
-            mTwoPane = true;
-        }
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

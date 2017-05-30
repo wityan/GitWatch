@@ -19,7 +19,7 @@ import com.gitwatch.gitwatch.core.Domain.Model.Branch;
 import com.gitwatch.gitwatch.core.Domain.Model.Repository;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.AlertHelper;
 import com.gitwatch.gitwatch.infrastructure.github.Helpers.NetworkStateHelper;
-import com.gitwatch.gitwatch.infrastructure.github.Services.BrancheService;
+import com.gitwatch.gitwatch.infrastructure.github.Services.BranchService;
 import com.gitwatch.gitwatch.infrastructure.github.Services.RepositoryService;
 
 import org.json.JSONException;
@@ -30,8 +30,9 @@ public class RepositoryActivityDetailFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item_id";
 
     private Repository mItem;
-    private List mItemBranche;
+    private List mItemBranch;
 
+    // Empty Constructor is needed by Fragment initialisation, so do not delete!
     public RepositoryActivityDetailFragment() {
     }
 
@@ -44,7 +45,7 @@ public class RepositoryActivityDetailFragment extends Fragment {
             String id = getArguments().getString(ARG_ITEM_ID);
             try {
                 mItem = (Repository) new RepositoryService().getById(Long.parseLong(id));
-                mItemBranche = new BrancheService().getByRepository(id);
+                mItemBranch = new BranchService().getByRepository(id);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -78,7 +79,7 @@ public class RepositoryActivityDetailFragment extends Fragment {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(mItemBranche));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(mItemBranch));
     }
 
     public class SimpleItemRecyclerViewAdapter

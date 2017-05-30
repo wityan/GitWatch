@@ -1,10 +1,8 @@
 package com.gitwatch.gitwatch.app.ui.Commit;
 
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.widget.TextView;
 
 import com.gitwatch.gitwatch.R;
 import com.gitwatch.gitwatch.core.Domain.Model.Commit;
-import com.gitwatch.gitwatch.core.Domain.Model.User;
 import com.gitwatch.gitwatch.infrastructure.github.Services.CommitService;
 
 import org.json.JSONException;
@@ -34,7 +31,7 @@ public class CommitActivityListActivity extends AppCompatActivity {
         String repositoryId = getIntent().getStringExtra("repository");
 
         try {
-            commitList = new CommitService().getByRepoAndBranche(repositoryId,branch);
+            commitList = new CommitService().getByRepoAndBranch(repositoryId,branch);
         } catch (JSONException e) {
             e.printStackTrace();
             finish();
@@ -71,15 +68,8 @@ public class CommitActivityListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
-            //holder.mContentView.setText(mValues.get(position).getName());
             holder.mCommiter.setText(mValues.get(position).getCommitter());
             holder.mCommitMessage.setText(mValues.get(position).getMessage());
-            holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Vielleicht noch eine Funktion commit jemandem senden
-                }
-            });
         }
 
         @Override

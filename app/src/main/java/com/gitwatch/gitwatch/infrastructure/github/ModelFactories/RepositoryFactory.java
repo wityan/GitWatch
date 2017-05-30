@@ -10,11 +10,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by bziswn on 23.05.2017.
- */
-
 public class RepositoryFactory {
+
     public static Repository getObjectFromJson(String json) throws JSONException {
         JSONObject obj = new JSONObject(json);
         return new Repository(obj.getLong("id"), obj.getString("name"), obj.getJSONObject("owner").getString("login"), obj.getString("description"));

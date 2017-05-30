@@ -9,10 +9,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by bziswn on 23.05.2017.
- */
-
 public class UserFactory{
 
     public static User getObjectFromJson(String json) throws JSONException {

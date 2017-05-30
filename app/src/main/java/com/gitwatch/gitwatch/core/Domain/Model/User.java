@@ -2,12 +2,14 @@ package com.gitwatch.gitwatch.core.Domain.Model;
 
 public class User{
 
+    // Constructor for list view
     public User(long id, String name, double score) {
         this.id = id;
         this.name = name;
         this.score = score;
     }
 
+    // Constructor for detail view
     public User(long id, String name, String bio) {
         this.id = id;
         this.name = name;
